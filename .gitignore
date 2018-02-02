@@ -1,0 +1,6 @@
+.git/
+.idea/
+
+Binary/
+Build/CMake/Build/
+Documentation/

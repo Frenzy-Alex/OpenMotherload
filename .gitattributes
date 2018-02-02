@@ -1,0 +1,6 @@
+Build/CMake/Modules/* linguist-vendored
+Documentation/* linguist-documentation
+
+*.cpp linguist-language=C++
+*.inl linguist-language=C++
+*.h linguist-language=C++

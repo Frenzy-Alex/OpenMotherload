@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -std=gnu++11 -Ofast -O3 -DNDEBUG   -Wl,-rpath,'$ORIGIN/.' CMakeFiles/OML.dir/Source/OML/Application.cpp.o CMakeFiles/OML.dir/Source/OML/Global.cpp.o CMakeFiles/OML.dir/Source/OML/Main.cpp.o  -o ../../../../Binary/Release/OML  -L/mnt/Work/Projects-My/OpenMotherload/Library/Release -Wl,-rpath,/mnt/Work/Projects-My/OpenMotherload/Library/Release -lACE 
