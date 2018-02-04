@@ -28,5 +28,7 @@ namespace ACE
         virtual void Terminate() override final;
     };
 
+    extern ACE_UniquePointer<ACE_AudioManager> ACE_AudioManagerS;
+
     #define ACE_AudioManagerS       ACE::ACE_AudioManager::GetInstance()
 }

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <ACE/ACE.h>
 #include <OML/Application.h>
 
@@ -5,33 +7,21 @@ using namespace ACE;
 
 namespace OML
 {
-    class OML_Global : public ACE_Singleton<OML_Global>
-    {
-    public:
-        void ResetAll();
+    void OML_GlobalInitialize();
+    void OML_GlobalTerminate();
 
-        ACE_UniquePointer<OML_Application> Application;
+    extern ACE_UniquePointer<OML_Application> G_Application;
 
-        //  Audio
-        ACE_UniquePointer<ACE_AudioDevice> AudioDevice;
+    //  Audio
+    extern ACE_UniquePointer<ACE_AudioDevice> G_AudioDevice;
+    extern ACE_UniquePointer<ACE_AudioContext> G_AudioContext;
+    extern ACE_UniquePointer<ACE_AudioListener> G_AudioListener;
 
-        //  Graphic
-        ACE_UniquePointer<ACE_Window> Window;
-    };
+    //  Graphic
+    extern ACE_UniquePointer<ACE_Window> G_Window;
+    extern ACE_UniquePointer<ACE_GraphicContext> G_GraphicContext;
+    extern ACE_UniquePointer<ACE_Viewport> G_Viewport;
 
-    #define OML_GlobalS     OML::OML_Global::GetInstance()
-
-    namespace Global
-    {
-        void OML_CreateGlobal();
-        void OML_DestroyGlobal();
-
-        extern ACE_UniquePointer<OML_Application> OML_ApplicationG;
-
-        //  Audio
-        extern ACE_UniquePointer<ACE_AudioDevice> OML_AudioDeviceG;
-
-        //  Graphic
-        extern ACE_UniquePointer<ACE_Window> OML_WindowG;
-    }
+    //  Game
+//    extern ACE_UniquePointer<ACE_Scene> G_Scene;
 }

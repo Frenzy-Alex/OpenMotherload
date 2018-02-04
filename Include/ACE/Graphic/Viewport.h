@@ -15,18 +15,18 @@
 
 namespace ACE
 {
-    class ACE_Window;
+    class ACE_GraphicContext;
     class ACE_Viewport : public ACE_Object
     {
-        friend class ACE_Window;
+        friend class ACE_GraphicContext;
     public:
         ACE_Viewport( const char *in_objectName );
         virtual ~ACE_Viewport();
 
-        ACE_Window *GetWindow() const;
+        ACE_GraphicContext *GetGraphicContext() const;
     protected:
         virtual void GraphicUpdate();
     private:
-        ACE_Window *m_window;
+        ACE_GraphicContext *m_graphicContext;
     };
 }

@@ -1,0 +1,3 @@
+/mnt/alex_data/Programming/Projects/OpenMotherload/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/mnt/alex_data/Programming/Projects/OpenMotherload/cmake-build-debug/CMakeFiles/OML.dir
+/mnt/alex_data/Programming/Projects/OpenMotherload/cmake-build-debug/CMakeFiles/edit_cache.dir

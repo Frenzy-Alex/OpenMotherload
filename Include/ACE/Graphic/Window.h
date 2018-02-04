@@ -13,7 +13,7 @@
 
 #include <ACE/Base/Containers/List.h>
 #include <ACE/Base/Object.h>
-#include <ACE/Graphic/Viewport.h>
+#include <ACE/Graphic/GraphicContext.h>
 
 namespace ACE
 {
@@ -23,14 +23,19 @@ namespace ACE
         explicit ACE_Window( const char *in_objectName );
         virtual ~ACE_Window();
 
-        void Create();
+        bool Create();
         void Destroy();
 
-        void AddViewport( ACE_Viewport *in_viewport );
-        void RemoveViewport( ACE_Viewport *in_viewport );
+        void SetIcon();
+        void SetPosition();
+        void SetSize();
+        void SetTitle( const char *in_title );
+
+        void AttachContext( ACE_GraphicContext *in_context );
+        void DetachContext( ACE_GraphicContext *in_context );
     protected:
         virtual void GraphicUpdate();
     private:
-        ACE_List<ACE_Viewport *> m_viewports;
+        ACE_List<ACE_GraphicContext *> m_graphicContexts;
     };
 }

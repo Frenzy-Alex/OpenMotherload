@@ -1,6 +1,6 @@
-#include <ACE/ACE.h>
+#pragma once
 
-#include <OML/Main.h>
+#include <ACE/ACE.h>
 
 namespace OML
 {

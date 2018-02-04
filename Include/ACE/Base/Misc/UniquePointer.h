@@ -27,7 +27,7 @@ namespace ACE
         ~ACE_UniquePointer();
 
         T *Release() noexcept;
-        void Reset( T *in_ptr ) noexcept;
+        void Reset( T *in_ptr = nullptr ) noexcept;
         void Swap( ACE_UniquePointer<T> &in_ref ) noexcept;
 
         //  Member access operator
@@ -55,7 +55,7 @@ namespace ACE
         ~ACE_UniquePointer();
 
         T *Release() noexcept;
-        void Reset( T *in_ptr ) noexcept;
+        void Reset( T *in_ptr = nullptr ) noexcept;
         void Swap( ACE_UniquePointer<T> &in_ref ) noexcept;
 
         //  Member access operator

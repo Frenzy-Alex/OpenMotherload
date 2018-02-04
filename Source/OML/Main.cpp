@@ -4,8 +4,8 @@ using namespace OML;
 
 int main( int in_argc, char **in_argv )
 {
-    Global::OML_CreateGlobal();
-    Global::ApplicationG->Run();
-    Global::OML_DestroyGlobal();
+    OML_GlobalInitialize();
+    G_Application->Run();
+    OML_GlobalTerminate();
     return 0;
 }
