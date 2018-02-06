@@ -2,5 +2,5 @@
 .idea/
 
 Binary/
-Build/CMake/Build/
+Build/CMake/Output/
 Documentation/

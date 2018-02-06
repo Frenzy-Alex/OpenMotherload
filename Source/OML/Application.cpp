@@ -33,7 +33,6 @@ namespace OML
     {
         ACE_Application_Terminate();
 
-
         G_AudioContext->Destroy();
         G_AudioDevice->Close();
 
