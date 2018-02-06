@@ -11,30 +11,16 @@
 
 #pragma once
 
-#include <ACE/PrecompiledHeader.h>
 #include <ACE/Base/Object.h>
-#include <ACE/Base/Containers/List.h>
-#include <ACE/Audio/AudioContext.h>
 
 namespace ACE
 {
-    class ACE_AudioDevice : public ACE_Object
+    class ACE_Camera : public ACE_Object
     {
-        friend class ACE_AudioContext;
     public:
-        ACE_AudioDevice( const char *in_objectName );
-        virtual ~ACE_AudioDevice() override;
+        ACE_Camera( const char *in_objectName );
+        virtual ~ACE_Camera() override;
 
-        virtual void AudioUpdate();
-
-        bool Open( const char *in_deviceName = nullptr );
-        bool IsOpen() const;
-        bool Close();
-
-        void AttachContext( ACE_AudioContext *in_context );
-        void DetachContext( ACE_AudioContext *in_context );
     private:
-        ALCdevice *m_device;
-        ACE_List<ACE_AudioContext *> m_contexts;
     };
 }

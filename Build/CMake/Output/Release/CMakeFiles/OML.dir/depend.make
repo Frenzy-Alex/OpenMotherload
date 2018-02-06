@@ -79,7 +79,7 @@ CMakeFiles/OML.dir/Source/OML/Application.cpp.o: ../../../../Include/ACE/Script/
 CMakeFiles/OML.dir/Source/OML/Application.cpp.o: ../../../../Include/ACE/Settings.h
 CMakeFiles/OML.dir/Source/OML/Application.cpp.o: ../../../../Include/ACE/SettingsBase.h
 CMakeFiles/OML.dir/Source/OML/Application.cpp.o: ../../../../Source/OML/Application.h
-CMakeFiles/OML.dir/Source/OML/Application.cpp.o: ../../../../Source/OML/Main.h
+CMakeFiles/OML.dir/Source/OML/Application.cpp.o: ../../../../Source/OML/Global.h
 CMakeFiles/OML.dir/Source/OML/Application.cpp.o: ../../../../Source/OML/Application.cpp
 
 CMakeFiles/OML.dir/Source/OML/Global.cpp.o: ../../../../Include/ACE/ACE.h
@@ -161,7 +161,6 @@ CMakeFiles/OML.dir/Source/OML/Global.cpp.o: ../../../../Include/ACE/Settings.h
 CMakeFiles/OML.dir/Source/OML/Global.cpp.o: ../../../../Include/ACE/SettingsBase.h
 CMakeFiles/OML.dir/Source/OML/Global.cpp.o: ../../../../Source/OML/Application.h
 CMakeFiles/OML.dir/Source/OML/Global.cpp.o: ../../../../Source/OML/Global.h
-CMakeFiles/OML.dir/Source/OML/Global.cpp.o: ../../../../Source/OML/Main.h
 CMakeFiles/OML.dir/Source/OML/Global.cpp.o: ../../../../Source/OML/Global.cpp
 
 CMakeFiles/OML.dir/Source/OML/Main.cpp.o: ../../../../Include/ACE/ACE.h
@@ -243,6 +242,5 @@ CMakeFiles/OML.dir/Source/OML/Main.cpp.o: ../../../../Include/ACE/Settings.h
 CMakeFiles/OML.dir/Source/OML/Main.cpp.o: ../../../../Include/ACE/SettingsBase.h
 CMakeFiles/OML.dir/Source/OML/Main.cpp.o: ../../../../Source/OML/Application.h
 CMakeFiles/OML.dir/Source/OML/Main.cpp.o: ../../../../Source/OML/Global.h
-CMakeFiles/OML.dir/Source/OML/Main.cpp.o: ../../../../Source/OML/Main.h
 CMakeFiles/OML.dir/Source/OML/Main.cpp.o: ../../../../Source/OML/Main.cpp
 

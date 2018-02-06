@@ -13,6 +13,8 @@
 
 #include <ACE/Base/Manager.h>
 #include <ACE/Base/Singleton.h>
+#include <ACE/Base/Containers/List.h>
+#include <ACE/Audio/AudioDevice.h>
 
 namespace ACE
 {
@@ -26,6 +28,8 @@ namespace ACE
         virtual void Initialize() override final;
         virtual void Update() override final;
         virtual void Terminate() override final;
+    private:
+        ACE_List<ACE_AudioDevice *> m_audioDevices;
     };
 
     extern ACE_UniquePointer<ACE_AudioManager> ACE_AudioManagerS;

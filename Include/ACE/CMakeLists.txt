@@ -62,6 +62,7 @@ set( ACE_IncludeFiles
      Include/ACE/Game/SceneManager.h
      Include/ACE/Game/SceneObject.h
 
+     Include/ACE/Graphic/Camera.h
      Include/ACE/Graphic/GraphicComponent.h
      Include/ACE/Graphic/GraphicContext.h
      Include/ACE/Graphic/GraphicManager.h

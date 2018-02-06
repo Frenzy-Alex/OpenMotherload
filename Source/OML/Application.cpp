@@ -16,17 +16,23 @@ namespace OML
     {
         ACE_Application_Initialize();
 
+        //  Audio
         ACE_ReturnIf( !G_AudioDevice->Open( nullptr ), ACE_Initializable_Errored() );
         G_AudioDevice->AttachContext( &G_AudioContext );
 
         ACE_ReturnIf( !G_AudioContext->Create(), ACE_Initializable_Errored() );
-        ACE_ReturnIf( !G_AudioContext->MakeCurrent(), ACE_Initializable_Errored() );
+        G_AudioContext->AttachListener( &G_AudioListener );
 
+
+
+        //  Graphic
         ACE_ReturnIf( !G_Window->Create(), ACE_Initializable_Errored() );
         G_Window->AttachContext( &G_GraphicContext );
 
         ACE_ReturnIf( !G_GraphicContext->Create(), ACE_Initializable_Errored() );
         ACE_ReturnIf( !G_GraphicContext->MakeCurrent(), ACE_Initializable_Errored() );
+
+        //  Game
     }
 
     void OML_Application::Terminate()

@@ -80,7 +80,7 @@ CMakeFiles/OML.dir/Source/OML/Application.cpp.o
  ../../../../Include/ACE/Settings.h
  ../../../../Include/ACE/SettingsBase.h
  ../../../../Source/OML/Application.h
- ../../../../Source/OML/Main.h
+ ../../../../Source/OML/Global.h
  /mnt/Work/Projects-My/OpenMotherload/Source/OML/Application.cpp
 CMakeFiles/OML.dir/Source/OML/Global.cpp.o
  ../../../../Include/ACE/ACE.h
@@ -162,7 +162,6 @@ CMakeFiles/OML.dir/Source/OML/Global.cpp.o
  ../../../../Include/ACE/SettingsBase.h
  ../../../../Source/OML/Application.h
  ../../../../Source/OML/Global.h
- ../../../../Source/OML/Main.h
  /mnt/Work/Projects-My/OpenMotherload/Source/OML/Global.cpp
 CMakeFiles/OML.dir/Source/OML/Main.cpp.o
  ../../../../Include/ACE/ACE.h
@@ -244,5 +243,4 @@ CMakeFiles/OML.dir/Source/OML/Main.cpp.o
  ../../../../Include/ACE/SettingsBase.h
  ../../../../Source/OML/Application.h
  ../../../../Source/OML/Global.h
- ../../../../Source/OML/Main.h
  /mnt/Work/Projects-My/OpenMotherload/Source/OML/Main.cpp

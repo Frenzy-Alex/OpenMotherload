@@ -48,8 +48,8 @@ namespace ACE
         bool MakeCurrent();
         void Destroy();
 
-        void AddViewport( ACE_Viewport *in_viewport );
-        void RemoveViewport( ACE_Viewport *in_viewport );
+        void AttachViewport( ACE_Viewport *in_viewport );
+        void DetachViewport( ACE_Viewport *in_viewport );
     protected:
         virtual void GraphicUpdate();
     private:

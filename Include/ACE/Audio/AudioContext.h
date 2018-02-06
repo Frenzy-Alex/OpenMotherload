@@ -13,6 +13,8 @@
 
 #include <ACE/PrecompiledHeader.h>
 #include <ACE/Base/Object.h>
+#include <ACE/Base/Containers/List.h>
+#include <ACE/Audio/AudioListener.h>
 
 namespace ACE
 {
@@ -24,13 +26,20 @@ namespace ACE
         ACE_AudioContext( const char *in_objectName );
         virtual ~ACE_AudioContext() override;
 
+        virtual void AudioUpdate();
+
         ACE_AudioDevice *GetDevice() const;
 
         bool Create();
         bool MakeCurrent();
         void Destroy();
+
+        void AttachListener( ACE_AudioListener *in_listener );
+        void DetachListener( ACE_AudioListener *in_listener );
     private:
         ACE_AudioDevice *m_device;
         ALCcontext *m_context;
+
+        ACE_List<ACE_AudioListener *> m_listeners;
     };
 }

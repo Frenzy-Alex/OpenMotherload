@@ -256,6 +256,9 @@
 		<Unit filename="/mnt/Work/Projects-My/OpenMotherload/Include/ACE/Game/SceneObject.h">
 			<Option target="OML"/>
 		</Unit>
+		<Unit filename="/mnt/Work/Projects-My/OpenMotherload/Include/ACE/Graphic/Camera.h">
+			<Option target="OML"/>
+		</Unit>
 		<Unit filename="/mnt/Work/Projects-My/OpenMotherload/Include/ACE/Graphic/GraphicComponent.h">
 			<Option target="OML"/>
 		</Unit>
