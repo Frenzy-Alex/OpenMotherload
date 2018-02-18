@@ -89,4 +89,29 @@ namespace ACE
     #   define ACE_Log_Core_Debug( sndr, ... )
     #   define ACE_Log_Core_DebugO( ... )
     #endif
+
+    /*
+     *  Graphic Log Macro
+     */
+
+    #define ACE_Log_Graphic( lvl, sndr, ... )           ACE_Log( ACE_LC_Graphic, lvl, sndr, __VA_ARGS__ )
+    #define ACE_Log_GraphicO( lvl, ... )                ACE_LogO( ACE_LC_Graphic, lvl, __VA_ARGS__ )
+
+    #define ACE_Log_Graphic_Fatal( sndr, ... )          ACE_Log_Graphic( ACE_LL_Fatal,   sndr, __VA_ARGS__ )
+    #define ACE_Log_Graphic_Error( sndr, ... )          ACE_Log_Graphic( ACE_LL_Error,   sndr, __VA_ARGS__ )
+    #define ACE_Log_Graphic_Warning( sndr, ... )        ACE_Log_Graphic( ACE_LL_Warning, sndr, __VA_ARGS__ )
+    #define ACE_Log_Graphic_Info( sndr, ... )           ACE_Log_Graphic( ACE_LL_Info,    sndr, __VA_ARGS__ )
+
+    #define ACE_Log_Graphic_FatalO( ... )               ACE_Log_GraphicO( ACE_LL_Fatal,  __VA_ARGS__ )
+    #define ACE_Log_Graphic_ErrorO( ... )               ACE_Log_GraphicO( ACE_LL_Error,  __VA_ARGS__ )
+    #define ACE_Log_Graphic_WarningO( ... )             ACE_Log_GraphicO( ACE_LL_Warning, __VA_ARGS__ )
+    #define ACE_Log_Graphic_InfoO( ... )                ACE_Log_GraphicO( ACE_LL_Info,   __VA_ARGS__ )
+
+    #if ACE_Setting_Debug
+    #   define ACE_Log_Graphic_Debug( sndr, ... )       ACE_Log_Graphic( ACE_LL_Debug,   sndr, __VA_ARGS__ )
+    #   define ACE_Log_Graphic_DebugO( ... )            ACE_Log_GraphicO( ACE_LL_Debug, __VA_ARGS__ )
+    #else
+    #   define ACE_Log_Graphic_Debug( sndr, ... )
+    #   define ACE_Log_Graphic_DebugO( ... )
+    #endif
 }

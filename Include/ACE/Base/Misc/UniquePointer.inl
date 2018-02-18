@@ -71,28 +71,28 @@ namespace ACE
     }
 
     template< typename T >
-    T &ACE_UniquePointer<T>::operator*() const
+    inline T &ACE_UniquePointer<T>::operator*() const
     {
         ACE_Assert( m_pointer != nullptr );
         return *m_pointer;
     }
 
     template< typename T >
-    T *ACE_UniquePointer<T>::operator&() const noexcept
+    inline T *ACE_UniquePointer<T>::operator&() const noexcept
     {
         ACE_Assert( m_pointer != nullptr );
         return m_pointer;
     }
 
     template< typename T >
-    T *ACE_UniquePointer<T>::operator->() const noexcept
+    inline T *ACE_UniquePointer<T>::operator->() const noexcept
     {
         ACE_Assert( m_pointer != nullptr );
         return m_pointer;
     }
 
     template< typename T >
-    ACE_UniquePointer<T>::operator bool() const noexcept
+    inline ACE_UniquePointer<T>::operator bool() const noexcept
     {
         return m_pointer != nullptr;
     }
@@ -153,21 +153,21 @@ namespace ACE
     }
 
     template< typename T >
-    T &ACE_UniquePointer<T[]>::operator*() const
+    inline T &ACE_UniquePointer<T[]>::operator*() const
     {
         ACE_Assert( m_pointer != nullptr );
         return *m_pointer;
     }
 
     template< typename T >
-    T *ACE_UniquePointer<T[]>::operator->() const noexcept
+    inline T *ACE_UniquePointer<T[]>::operator->() const noexcept
     {
         ACE_Assert( m_pointer != nullptr );
         return m_pointer;
     }
 
     template< typename T >
-    ACE_UniquePointer<T[]>::operator bool() const noexcept
+    inline ACE_UniquePointer<T[]>::operator bool() const noexcept
     {
         return m_pointer != nullptr;
     }

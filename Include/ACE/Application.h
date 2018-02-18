@@ -20,10 +20,9 @@ namespace ACE
 {
     class ACE_ApplicationInitializer
     {
-        friend class ACE_Application;
-    private:
         ACE_ApplicationInitializer();
         virtual ~ACE_ApplicationInitializer();
+        friend class ACE_Application;
     };
 
     class ACE_Application : public ACE_ApplicationInitializer, public ACE_Object, public ACE_Initializable
@@ -36,7 +35,7 @@ namespace ACE
         explicit ACE_Application( const char *in_objectName );
         virtual ~ACE_Application() override;
 
-        void AddManager( ACE_IManager *in_manager );
+        void AddManager( ACE_Manager *in_manager );
 
         virtual void Initialize() override;
 
@@ -45,7 +44,7 @@ namespace ACE
         virtual void Terminate() override;
     private:
         static bool sm_isExit;
-        ACE_List<ACE_IManager *> m_managers;
+        ACE_List<ACE_Manager *> m_managers;
     };
 
     #define ACE_Exit()      ACE::ACE_Application::Exit()

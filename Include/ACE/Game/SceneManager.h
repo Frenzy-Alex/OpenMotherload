@@ -16,7 +16,7 @@
 
 namespace ACE
 {
-    class ACE_SceneManager final : public ACE_Manager<false>, public ACE_Singleton<ACE_SceneManager>
+    class ACE_SceneManager final : public ACE_Manager, public ACE_Singleton<ACE_SceneManager>
     {
         ACE_SceneManager();
         virtual ~ACE_SceneManager() override final;

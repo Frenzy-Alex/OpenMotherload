@@ -13,7 +13,6 @@
 
 #include <ACE/Base/InitializationStatus.h>
 #include <ACE/Base/Misc/Macro.h>
-#include <ACE/Base/Object.h>
 
 namespace ACE
 {

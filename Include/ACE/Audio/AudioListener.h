@@ -12,7 +12,7 @@
 #pragma once
 
 #include <ACE/Base/Object.h>
-#include <ACE/Math/Vector3.h>
+#include <ACE/Math/Vector.h>
 #include <ACE/Game/Scene.h>
 
 namespace ACE
@@ -47,11 +47,10 @@ namespace ACE
     class ACE_AudioListener : public ACE_Object
     {
         friend class ACE_AudioContext;
+        friend class ACE_Scene;
     public:
         explicit ACE_AudioListener( const char *in_objectName );
         virtual ~ACE_AudioListener() override;
-
-        virtual void AudioUpdate();
 
         ACE_AudioContext *GetContext() const;
 
@@ -66,6 +65,8 @@ namespace ACE
         void SetOrientation( const ACE_Orientation &in_orientation );
         void SetPosition( const ACE_Vector3f &in_position );
         void SetVelocity( const ACE_Vector3f &in_velocity );
+    protected:
+        virtual void AudioUpdate();
     private:
         ACE_AudioContext *m_context;
 

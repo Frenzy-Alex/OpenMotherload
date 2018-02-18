@@ -12,7 +12,7 @@
 #pragma once
 
 #include <ACE/Base/Object.h>
-#include <ACE/Math/Vector3.h>
+#include <ACE/Math/Vector.h>
 #include <ACE/Audio/AudioSourceState.h>
 
 namespace ACE

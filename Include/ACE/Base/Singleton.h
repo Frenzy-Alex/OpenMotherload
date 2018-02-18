@@ -15,20 +15,17 @@
 
 namespace ACE
 {
-    class ACE_ApplicationInitializer;
-
     template< class T >
     class ACE_Singleton
     {
-        friend class ACE_ApplicationInitializer;
     public:
+        static void CreateInstance();
+        static void DestroyInstance();
+
         static T &GetInstance();
     protected:
         ACE_Singleton() = default;
         virtual ~ACE_Singleton() = default;
-
-        static void CreateInstance();
-        static void DestroyInstance();
     private:
         static T *sm_instance;
     };

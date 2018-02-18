@@ -132,14 +132,14 @@ namespace ACE
     inline T &ACE_List<T>::Front()
     {
         ACE_Assert( m_head != nullptr );
-        return m_head->m_data();
+        return m_head->m_data;
     }
 
     template< typename T >
     inline T &ACE_List<T>::Back()
     {
         ACE_Assert( m_tail != nullptr );
-        return m_tail->m_data();
+        return m_tail->m_data;
     }
 
     template< typename T >

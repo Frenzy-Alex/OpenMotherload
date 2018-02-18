@@ -15,7 +15,7 @@
 
 namespace ACE
 {
-    void ACE_AssertPrint( const char *in_fileName, int in_line, const char *in_functionName, const char *in_condition );
+    [[noreturn]] void ACE_AssertPrint( const char *in_fileName, int in_line, const char *in_functionName, const char *in_condition );
 
     #if ACE_Setting_Debug == 0
     #   define ACE_Assert( expr )       ((void)0)

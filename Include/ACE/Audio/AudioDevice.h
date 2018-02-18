@@ -18,14 +18,14 @@
 
 namespace ACE
 {
+    class ACE_AudioManager;
     class ACE_AudioDevice : public ACE_Object
     {
+        friend class ACE_AudioManager;
         friend class ACE_AudioContext;
     public:
         ACE_AudioDevice( const char *in_objectName );
         virtual ~ACE_AudioDevice() override;
-
-        virtual void AudioUpdate();
 
         bool Open( const char *in_deviceName = nullptr );
         bool IsOpen() const;
@@ -33,6 +33,8 @@ namespace ACE
 
         void AttachContext( ACE_AudioContext *in_context );
         void DetachContext( ACE_AudioContext *in_context );
+    protected:
+        virtual void AudioUpdate();
     private:
         ALCdevice *m_device;
         ACE_List<ACE_AudioContext *> m_contexts;

@@ -26,8 +26,6 @@ namespace ACE
         ACE_AudioContext( const char *in_objectName );
         virtual ~ACE_AudioContext() override;
 
-        virtual void AudioUpdate();
-
         ACE_AudioDevice *GetDevice() const;
 
         bool Create();
@@ -36,6 +34,8 @@ namespace ACE
 
         void AttachListener( ACE_AudioListener *in_listener );
         void DetachListener( ACE_AudioListener *in_listener );
+    protected:
+        virtual void AudioUpdate();
     private:
         ACE_AudioDevice *m_device;
         ALCcontext *m_context;

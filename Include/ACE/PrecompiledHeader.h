@@ -17,6 +17,7 @@
  *  Basic Headers                                                               *
  ********************************************************************************/
 
+#include <climits>
 #include <cstdarg>
 #include <cstdint>
 #include <cstdio>
@@ -32,3 +33,11 @@
 #include <AL/al.h>
 #include <AL/alc.h>
 #include <AL/alut.h>
+
+#if ACE_Platform == ACE_Platform_Linux
+
+#include <X11/X.h>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+
+#endif

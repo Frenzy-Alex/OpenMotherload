@@ -16,7 +16,7 @@
 
 namespace ACE
 {
-    class ACE_GameManager final : public ACE_Manager<false>, public ACE_Singleton<ACE_GameManager>
+    class ACE_GameManager final : public ACE_Manager, public ACE_Singleton<ACE_GameManager>
     {
         ACE_GameManager();
         virtual ~ACE_GameManager() override final;

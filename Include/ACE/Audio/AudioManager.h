@@ -18,7 +18,7 @@
 
 namespace ACE
 {
-    class ACE_AudioManager final : public ACE_Manager<false>, public ACE_Singleton<ACE_AudioManager>
+    class ACE_AudioManager final : public ACE_Manager, public ACE_Singleton<ACE_AudioManager>
     {
         ACE_AudioManager();
         virtual ~ACE_AudioManager() override final;
@@ -32,7 +32,7 @@ namespace ACE
         ACE_List<ACE_AudioDevice *> m_audioDevices;
     };
 
-    extern ACE_UniquePointer<ACE_AudioManager> ACE_AudioManagerS;
+//    extern ACE_UniquePointer<ACE_AudioManager> ACE_AudioManagerS;
 
     #define ACE_AudioManagerS       ACE::ACE_AudioManager::GetInstance()
 }

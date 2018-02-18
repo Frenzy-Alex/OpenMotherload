@@ -14,37 +14,50 @@
 namespace ACE
 {
     template< typename T >
-    ACE_Vector3<T>::ACE_Vector3()
+    constexpr T ACE_Min()
     {
+        return 0;
+    }
 
+    template<>
+    constexpr int ACE_Min()
+    {
+        return INT_MIN;
     }
 
     template< typename T >
-    ACE_Vector3<T>::ACE_Vector3( const ACE_Vector3 <T> &in_vec ) : x( in_vec.x ), y( in_vec.y ), z( in_vec.z )
+    constexpr T ACE_Max()
     {
+        return 0;
+    }
 
+    template<>
+    constexpr int ACE_Max()
+    {
+        return INT_MAX;
     }
 
     template< typename T >
-    ACE_Vector3<T>::ACE_Vector3( T in_x, T in_y, T in_z ) : x( in_x ), y( in_y ), z( in_z )
+    constexpr const T &ACE_Min( const T &in_lhs, const T &in_rhs )
     {
-
+        return in_lhs < in_rhs ? in_lhs : in_rhs;
     }
 
     template< typename T >
-    T *ACE_Vector3<T>::Data() const
+    constexpr const T &ACE_Max( const T &in_lhs, const T &in_rhs )
     {
-        return (T *)this;
+        return in_lhs > in_rhs ? in_lhs : in_rhs;
     }
 
     template< typename T >
-    ACE_Vector3 <T> &ACE_Vector3<T>::operator=( const ACE_Vector3 &in_ref )
+    constexpr T ACE_Random()
     {
-        x = in_ref.x;
-        y = in_ref.y;
-        z = in_ref.z;
-        return *this;
+        return ACE_Min<T>() + rand() % ACE_Max<T>();
     }
 
-
+    template< typename T >
+    constexpr T ACE_Random( const T &in_min, const T &in_max )
+    {
+        return in_min + rand() % ( in_max - in_min + 1 );
+    }
 }

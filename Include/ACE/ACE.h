@@ -11,7 +11,6 @@
 
 #pragma once
 
-
 /*
  *  Audio
  */
@@ -22,6 +21,7 @@
 #include <ACE/Audio/AudioManager.h>
 #include <ACE/Audio/AudioResource.h>
 #include <ACE/Audio/AudioSource.h>
+#include <ACE/Audio/AudioSourceState.h>
 
 /*
  *  Base
@@ -62,6 +62,8 @@
 #include <ACE/Core/Logging/LoggingLevel.h>
 #include <ACE/Core/Logging/LoggingManager.h>
 
+#include <ACE/Core/Profiling/ProfilingManager.h>
+
 #include <ACE/Core/ObjectManager.h>
 
 /*
@@ -85,6 +87,7 @@
 /*
  *  Graphic
  */
+#include <ACE/Graphic/Camera.h>
 #include <ACE/Graphic/GraphicComponent.h>
 #include <ACE/Graphic/GraphicContext.h>
 #include <ACE/Graphic/GraphicManager.h>
@@ -96,10 +99,9 @@
 /*
  *  Math
  */
-#include <ACE/Math/Matrix4x4.h>
-#include <ACE/Math/Vector2.h>
-#include <ACE/Math/Vector3.h>
-#include <ACE/Math/Vector4.h>
+#include <ACE/Math/Matrix.h>
+#include <ACE/Math/Misc.h>
+#include <ACE/Math/Vector.h>
 
 /*
  *  Network
@@ -114,9 +116,12 @@
 /*
  *  Resource
  */
+#include <ACE/Resource/AudioResource.h>
+#include <ACE/Resource/ModelResource.h>
 #include <ACE/Resource/Resource.h>
 #include <ACE/Resource/ResourceManager.h>
 #include <ACE/Resource/ShaderResource.h>
+#include <ACE/Resource/TextureResource.h>
 
 /*
  *  Script
@@ -124,5 +129,6 @@
 #include <ACE/Script/ScriptManager.h>
 
 #include <ACE/Application.h>
+#include <ACE/PrecompiledHeader.h>
 #include <ACE/Settings.h>
 #include <ACE/SettingsBase.h>

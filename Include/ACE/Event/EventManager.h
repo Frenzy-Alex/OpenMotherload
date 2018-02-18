@@ -11,13 +11,21 @@
 
 #pragma once
 
+#include <ACE/Base/Manager.h>
+#include <ACE/Base/Singleton.h>
+
 namespace ACE
 {
-    class ACE_EventManager final
+    class ACE_EventManager final : public ACE_Manager, public ACE_Singleton<ACE_EventManager>
     {
         ACE_EventManager();
-        virtual ~ACE_EventManager();
-    public:
-    private:
+        virtual ~ACE_EventManager() override final;
+        ACE_SingletonFriend( ACE_EventManager );
+    protected:
+        virtual void Initialize() override final;
+        virtual void Update() override final;
+        virtual void Terminate() override final;
     };
+
+    #define ACE_EventManagerS       ACE::ACE_EventManager::GetInstance()
 }

@@ -71,14 +71,12 @@ set( ACE_IncludeFiles
      Include/ACE/Graphic/Window.h
      Include/ACE/Graphic/WindowManager.h
 
-     Include/ACE/Math/Matrix4x4.h
-     Include/ACE/Math/Matrix4x4.inl
-     Include/ACE/Math/Vector2.h
-     Include/ACE/Math/Vector2.inl
-     Include/ACE/Math/Vector3.h
-     Include/ACE/Math/Vector3.inl
-     Include/ACE/Math/Vector4.h
-     Include/ACE/Math/Vector4.inl
+     Include/ACE/Math/Matrix.h
+     Include/ACE/Math/Matrix.inl
+     Include/ACE/Math/Misc.h
+     Include/ACE/Math/Misc.inl
+     Include/ACE/Math/Vector.h
+     Include/ACE/Math/Vector.inl
 
      Include/ACE/Network/NetworkManager.h
 

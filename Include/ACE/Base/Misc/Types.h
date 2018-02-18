@@ -32,8 +32,6 @@ namespace ACE
 
     typedef size_t size;
 
-
-
     typedef void       *ptr;
     typedef const void *cptr;
 }

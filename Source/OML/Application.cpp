@@ -23,8 +23,6 @@ namespace OML
         ACE_ReturnIf( !G_AudioContext->Create(), ACE_Initializable_Errored() );
         G_AudioContext->AttachListener( &G_AudioListener );
 
-
-
         //  Graphic
         ACE_ReturnIf( !G_Window->Create(), ACE_Initializable_Errored() );
         G_Window->AttachContext( &G_GraphicContext );
@@ -37,12 +35,12 @@ namespace OML
 
     void OML_Application::Terminate()
     {
-        ACE_Application_Terminate();
-
         G_AudioContext->Destroy();
         G_AudioDevice->Close();
 
         G_GraphicContext->Destroy();
         G_Window->Destroy();
+
+        ACE_Application_Terminate();
     }
 }

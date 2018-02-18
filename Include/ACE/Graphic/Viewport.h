@@ -12,6 +12,9 @@
 #pragma once
 
 #include <ACE/Base/Object.h>
+#include <ACE/Base/Containers/List.h>
+#include <ACE/Graphic/Camera.h>
+#include <ACE/Math/Vector.h>
 
 namespace ACE
 {
@@ -24,9 +27,23 @@ namespace ACE
         virtual ~ACE_Viewport();
 
         ACE_GraphicContext *GetGraphicContext() const;
+
+        const ACE_Vector2i &GetPosition() const;
+        const ACE_Vector2i &GetSize() const;
+
+        void SetPosition( const ACE_Vector2i &in_position );
+        void SetSize( const ACE_Vector2i &in_size );
+
+        void AttachCamera( ACE_Camera *in_camera );
+        void DetachCamera( ACE_Camera *in_camera );
     protected:
         virtual void GraphicUpdate();
     private:
         ACE_GraphicContext *m_graphicContext;
+
+        ACE_Vector2i m_position;
+        ACE_Vector2i m_size;
+
+        ACE_List<ACE_Camera *> m_cameras;
     };
 }

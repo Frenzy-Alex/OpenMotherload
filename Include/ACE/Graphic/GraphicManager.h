@@ -16,7 +16,7 @@
 
 namespace ACE
 {
-    class ACE_GraphicManager final : public ACE_Manager<false>, public ACE_Singleton<ACE_GraphicManager>
+    class ACE_GraphicManager final : public ACE_Manager, public ACE_Singleton<ACE_GraphicManager>
     {
         ACE_GraphicManager();
         virtual ~ACE_GraphicManager() override final;
