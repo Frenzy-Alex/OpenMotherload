@@ -1,6 +1,6 @@
 /********************************************************************************
  *                                                                              *
- *          Copyright (C) 2017 Oleksandr Lynok. All Rights Reserved.            *
+ *          Copyright (C) 2018 Oleksandr Lynok. All Rights Reserved.            *
  *                                                                              *
  *                  This file is part of Advanced Crystal Engine.               *
  *                                                                              *
@@ -13,6 +13,7 @@
 
 #include <ACE/Settings.h>
 #include <ACE/PrecompiledHeader.h>
-#include <ACE/Base/Misc/PlatformDetection.h>
+#include <ACE/Base/Misc/Assert.h>
 #include <ACE/Base/Misc/Macro.h>
+#include <ACE/Base/Misc/PlatformDetection.h>
 #include <ACE/Base/Misc/Types.h>

@@ -1,6 +1,6 @@
 /********************************************************************************
  *                                                                              *
- *          Copyright (C) 2017 Oleksandr Lynok. All Rights Reserved.            *
+ *          Copyright (C) 2018 Oleksandr Lynok. All Rights Reserved.            *
  *                                                                              *
  *                  This file is part of Advanced Crystal Engine.               *
  *                                                                              *
@@ -11,7 +11,7 @@
 
 #pragma once
 
-#include <ACE/Base/Object.h>
+#include <ACE/Core/Object/Object.h>
 #include <ACE/Math/Vector.h>
 #include <ACE/Game/Scene.h>
 

@@ -1,3 +1,14 @@
+/********************************************************************************
+ *                                                                              *
+ *          Copyright (C) 2018 Oleksandr Lynok. All Rights Reserved.            *
+ *                                                                              *
+ *                  This file is part of OpenMotherload.               			*
+ *                                                                              *
+ *      OpenMotherload is licensed under GNU Lesser General Public     			*
+ *  License (LGPL), version 3.  See file "LICENSE.txt".                         *
+ *                                                                              *
+ ********************************************************************************/
+
 #pragma once
 
 #include <ACE/ACE.h>
@@ -9,6 +20,8 @@ namespace OML
 {
     void OML_GlobalInitialize();
     void OML_GlobalTerminate();
+
+    extern ACE_UniquePointer<ACE_RootInitializer> G_RootInitializer;
 
     extern ACE_UniquePointer<OML_Application> G_Application;
 

@@ -1,3 +1,14 @@
+/********************************************************************************
+ *                                                                              *
+ *          Copyright (C) 2018 Oleksandr Lynok. All Rights Reserved.            *
+ *                                                                              *
+ *                  This file is part of OpenMotherload.               			*
+ *                                                                              *
+ *      OpenMotherload is licensed under GNU Lesser General Public     			*
+ *  License (LGPL), version 3.  See file "LICENSE.txt".                         *
+ *                                                                              *
+ ********************************************************************************/
+
 #include <OML/Application.h>
 
 #include <OML/Global.h>
@@ -25,6 +36,7 @@ namespace OML
 
         //  Graphic
         ACE_ReturnIf( !G_Window->Create(), ACE_Initializable_Errored() );
+        G_Window->SetTitle("OpenMotherload");
         G_Window->AttachContext( &G_GraphicContext );
 
         ACE_ReturnIf( !G_GraphicContext->Create(), ACE_Initializable_Errored() );
@@ -33,14 +45,19 @@ namespace OML
         //  Game
     }
 
-    void OML_Application::Terminate()
+    void OML_Application::Update()
     {
-        G_AudioContext->Destroy();
-        G_AudioDevice->Close();
 
-        G_GraphicContext->Destroy();
-        G_Window->Destroy();
-
-        ACE_Application_Terminate();
     }
+
+    void OML_Application::Terminate()
+	{
+		G_AudioContext->Destroy();
+		G_AudioDevice->Close();
+
+		G_GraphicContext->Destroy();
+		G_Window->Destroy();
+
+		ACE_Application_Terminate();
+	}
 }

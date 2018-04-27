@@ -1,6 +1,6 @@
 /********************************************************************************
  *                                                                              *
- *          Copyright (C) 2017 Oleksandr Lynok. All Rights Reserved.            *
+ *          Copyright (C) 2018 Oleksandr Lynok. All Rights Reserved.            *
  *                                                                              *
  *                  This file is part of Advanced Crystal Engine.               *
  *                                                                              *
@@ -23,6 +23,6 @@ namespace ACE
         ACE_Event( ACE_EventType in_eventType );
         virtual ~ACE_Event();
     private:
-        ACE_EventType m_eventType;
+        const ACE_EventType m_eventType;
     };
 }

@@ -1,6 +1,6 @@
 /********************************************************************************
  *                                                                              *
- *          Copyright (C) 2017 Oleksandr Lynok. All Rights Reserved.            *
+ *          Copyright (C) 2018 Oleksandr Lynok. All Rights Reserved.            *
  *                                                                              *
  *                  This file is part of Advanced Crystal Engine.               *
  *                                                                              *
@@ -11,8 +11,8 @@
 
 #pragma once
 
-#include <ACE/Base/Object.h>
 #include <ACE/Base/Containers/List.h>
+#include <ACE/Core/Object/Object.h>
 #include <ACE/Graphic/GraphicContext.h>
 #include <ACE/Math/Vector.h>
 
@@ -43,13 +43,13 @@ namespace ACE
     protected:
         virtual void GraphicUpdate();
     private:
-        #if ACE_Platform == ACE_Platform_Linux
+#if ACE_Platform == ACE_Platform_Linux
 
         XVisualInfo *m_visualInfo;
         Colormap m_colorMap;
         Window m_window;
 
-        #endif
+#endif
 
         //icon
         ACE_Vector2i m_position;

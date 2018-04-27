@@ -1,3 +1,0 @@
-/mnt/Work/Projects-My/OpenMotherload/Build/CMake/Output/Release/CMakeFiles/rebuild_cache.dir
-/mnt/Work/Projects-My/OpenMotherload/Build/CMake/Output/Release/CMakeFiles/OML.dir
-/mnt/Work/Projects-My/OpenMotherload/Build/CMake/Output/Release/CMakeFiles/edit_cache.dir

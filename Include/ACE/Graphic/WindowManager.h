@@ -1,6 +1,6 @@
 /********************************************************************************
  *                                                                              *
- *          Copyright (C) 2017 Oleksandr Lynok. All Rights Reserved.            *
+ *          Copyright (C) 2018 Oleksandr Lynok. All Rights Reserved.            *
  *                                                                              *
  *                  This file is part of Advanced Crystal Engine.               *
  *                                                                              *
@@ -14,6 +14,7 @@
 #include <ACE/Base/Manager.h>
 #include <ACE/Base/Singleton.h>
 #include <ACE/Base/Containers/List.h>
+#include <ACE/RootInitializer.h>
 #include <ACE/Graphic/Window.h>
 
 namespace ACE
@@ -22,7 +23,7 @@ namespace ACE
     {
         ACE_WindowManager();
         virtual ~ACE_WindowManager() override final;
-        ACE_SingletonFriend( ACE_WindowManager );
+        friend class ACE_RootInitializer;
         friend class ACE_Window;
     public:
     protected:

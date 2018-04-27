@@ -1,6 +1,6 @@
 /********************************************************************************
  *                                                                              *
- *          Copyright (C) 2017 Oleksandr Lynok. All Rights Reserved.            *
+ *          Copyright (C) 2018 Oleksandr Lynok. All Rights Reserved.            *
  *                                                                              *
  *                  This file is part of Advanced Crystal Engine.               *
  *                                                                              *
@@ -47,7 +47,7 @@
 #include <ACE/Base/Loadable.h>
 #include <ACE/Base/LoadingStatus.h>
 #include <ACE/Base/Manager.h>
-#include <ACE/Base/Object.h>
+#include <ACE/Core/Object/Object.h>
 #include <ACE/Base/Singleton.h>
 
 /*
@@ -64,11 +64,21 @@
 
 #include <ACE/Core/Profiling/ProfilingManager.h>
 
-#include <ACE/Core/ObjectManager.h>
+#include <ACE/Core/Application.h>
+#include <ACE/Core/CoreManager.h>
+#include <ACE/Core/Object/ObjectManager.h>
 
 /*
  *  Event
  */
+#include <ACE/Event/Keyboard/KeyboardEvent.h>
+#include <ACE/Event/Keyboard/KeyboardEventManager.h>
+#include <ACE/Event/Keyboard/KeyboardEventType.h>
+
+#include <ACE/Event/Pointer/PointerEvent.h>
+#include <ACE/Event/Pointer/PointerEventManager.h>
+#include <ACE/Event/Pointer/PointerEventType.h>
+
 #include <ACE/Event/Event.h>
 #include <ACE/Event/EventManager.h>
 #include <ACE/Event/EventType.h>
@@ -128,7 +138,7 @@
  */
 #include <ACE/Script/ScriptManager.h>
 
-#include <ACE/Application.h>
 #include <ACE/PrecompiledHeader.h>
+#include <ACE/RootManager.h>
 #include <ACE/Settings.h>
 #include <ACE/SettingsBase.h>

@@ -1,6 +1,6 @@
 /********************************************************************************
  *                                                                              *
- *          Copyright (C) 2017 Oleksandr Lynok. All Rights Reserved.            *
+ *          Copyright (C) 2018 Oleksandr Lynok. All Rights Reserved.            *
  *                                                                              *
  *                  This file is part of Advanced Crystal Engine.               *
  *                                                                              *
@@ -11,26 +11,19 @@
 
 #pragma once
 
-#include <ACE/Base/Misc/UniquePointer.h>
-
 namespace ACE
 {
     template< class T >
     class ACE_Singleton
     {
     public:
-        static void CreateInstance();
-        static void DestroyInstance();
-
         static T &GetInstance();
     protected:
-        ACE_Singleton() = default;
-        virtual ~ACE_Singleton() = default;
+        ACE_Singleton();
+        virtual ~ACE_Singleton();
     private:
         static T *sm_instance;
     };
-
-    #define ACE_SingletonFriend( obj )      friend class ACE_Singleton< obj >
 }
 
 #include <ACE/Base/Singleton.inl>

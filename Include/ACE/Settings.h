@@ -1,6 +1,6 @@
 /********************************************************************************
  *                                                                              *
- *          Copyright (C) 2017 Oleksandr Lynok. All Rights Reserved.            *
+ *          Copyright (C) 2018 Oleksandr Lynok. All Rights Reserved.            *
  *                                                                              *
  *                  This file is part of Advanced Crystal Engine.               *
  *                                                                              *
@@ -37,7 +37,6 @@ namespace ACE
      *  Default: config.cfg
      */
     extern ACE_String ACE_Setting_Config_ConfigFileName;
-
 
     /*
      *  Default: ACE_LL_Debug

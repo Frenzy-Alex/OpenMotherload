@@ -1,6 +1,6 @@
 /********************************************************************************
  *                                                                              *
- *          Copyright (C) 2017 Oleksandr Lynok. All Rights Reserved.            *
+ *          Copyright (C) 2018 Oleksandr Lynok. All Rights Reserved.            *
  *                                                                              *
  *                  This file is part of Advanced Crystal Engine.               *
  *                                                                              *
@@ -12,16 +12,16 @@
 #pragma once
 
 #include <ACE/Base/Misc/Macro.h>
-#include <ACE/Base/Object.h>
+#include <ACE/Core/Object/Object.h>
 #include <ACE/Base/Initializable.h>
 
 namespace ACE
 {
-    class ACE_Application;
+    class ACE_RootManager;
 
     class ACE_Manager : public ACE_Object, public ACE_Initializable
     {
-        friend class ACE_Application;
+        friend class ACE_RootManager;
     protected:
         explicit ACE_Manager( const char *in_objectName );
         virtual ~ACE_Manager() override = default;

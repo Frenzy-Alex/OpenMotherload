@@ -1,6 +1,6 @@
 /********************************************************************************
  *                                                                              *
- *          Copyright (C) 2017 Oleksandr Lynok. All Rights Reserved.            *
+ *          Copyright (C) 2018 Oleksandr Lynok. All Rights Reserved.            *
  *                                                                              *
  *                  This file is part of Advanced Crystal Engine.               *
  *                                                                              *
@@ -11,32 +11,28 @@
 
 #pragma once
 
+#include <ACE/Base/Misc/Assert.h>
+
 namespace ACE
 {
     template< class T > T *ACE_Singleton<T>::sm_instance = nullptr;
 
     template< class T >
-    void ACE_Singleton<T>::CreateInstance()
+    inline ACE_Singleton<T>::ACE_Singleton()
     {
         ACE_Assert( sm_instance == nullptr );
-        sm_instance = new T();
-        //        sm_instance = (T *)malloc( sizeof( T ) );
-        //        new( sm_instance ) T();
-        ACE_Assert( sm_instance != nullptr );
+        sm_instance = (T*)this;
     }
 
     template< class T >
-    void ACE_Singleton<T>::DestroyInstance()
+    inline ACE_Singleton<T>::~ACE_Singleton()
     {
         ACE_Assert( sm_instance != nullptr );
-        delete sm_instance;
-        //        sm_instance->~T();
-        //        free( sm_instance );
         sm_instance = nullptr;
     }
 
     template< class T >
-    T &ACE_Singleton<T>::GetInstance()
+    inline T &ACE_Singleton<T>::GetInstance()
     {
         ACE_Assert( sm_instance != nullptr );
         return *sm_instance;

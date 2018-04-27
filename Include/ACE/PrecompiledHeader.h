@@ -1,6 +1,6 @@
 /********************************************************************************
  *                                                                              *
- *          Copyright (C) 2017 Oleksandr Lynok. All Rights Reserved.            *
+ *          Copyright (C) 2018 Oleksandr Lynok. All Rights Reserved.            *
  *                                                                              *
  *                  This file is part of Advanced Crystal Engine.               *
  *                                                                              *
@@ -17,19 +17,24 @@
  *  Basic Headers                                                               *
  ********************************************************************************/
 
+//  C Headers
+
 #include <climits>
+#include <cmath>
 #include <cstdarg>
 #include <cstdint>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
+
 #include <typeinfo>
 
 #include <string>
 
 #include <pthread.h>
 
+//  OpenAL Headers
 #include <AL/al.h>
 #include <AL/alc.h>
 #include <AL/alut.h>
@@ -41,3 +46,5 @@
 #include <X11/Xutil.h>
 
 #endif
+
+//  OpenGL Headers

@@ -1,6 +1,6 @@
 /********************************************************************************
  *                                                                              *
- *          Copyright (C) 2017 Oleksandr Lynok. All Rights Reserved.            *
+ *          Copyright (C) 2018 Oleksandr Lynok. All Rights Reserved.            *
  *                                                                              *
  *                  This file is part of Advanced Crystal Engine.               *
  *                                                                              *
@@ -13,6 +13,7 @@
 
 #include <ACE/Base/Manager.h>
 #include <ACE/Base/Singleton.h>
+#include <ACE/RootInitializer.h>
 
 namespace ACE
 {
@@ -20,7 +21,7 @@ namespace ACE
     {
         ACE_GraphicManager();
         virtual ~ACE_GraphicManager() override final;
-        ACE_SingletonFriend( ACE_GraphicManager );
+        friend class ACE_RootInitializer;
     public:
     protected:
         virtual void Initialize() override final;

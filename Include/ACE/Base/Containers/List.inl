@@ -1,6 +1,6 @@
 /********************************************************************************
  *                                                                              *
- *          Copyright (C) 2017 Oleksandr Lynok. All Rights Reserved.            *
+ *          Copyright (C) 2018 Oleksandr Lynok. All Rights Reserved.            *
  *                                                                              *
  *                  This file is part of Advanced Crystal Engine.               *
  *                                                                              *
@@ -68,7 +68,7 @@ namespace ACE
     }
 
     template< typename T >
-    ACE_List<T>::ACE_List( const ACE_List<T> &in_list )
+    ACE_List<T>::ACE_List( const ACE_List <T> &in_list )
     {
         if( !in_list.IsEmpty() )
         {
@@ -95,7 +95,7 @@ namespace ACE
     }
 
     template< typename T >
-    ACE_List<T>::ACE_List( ACE_List<T> &&in_list ) noexcept
+    ACE_List<T>::ACE_List( ACE_List <T> &&in_list ) noexcept
     {
         m_head = in_list.m_head;
         m_tail = in_list.m_tail;
@@ -145,13 +145,13 @@ namespace ACE
     template< typename T >
     void ACE_List<T>::Clear()
     {
-        ACE_ListNode<T> *_temp = m_head;
-        ACE_ListNode<T> *_temp2;
-        while( _temp != nullptr )
+        ACE_ListNode<T> *_current = m_head;
+        ACE_ListNode<T> *_next;
+        while( _current != nullptr )
         {
-            _temp2 = _temp->m_nextNode;
-            delete _temp;
-            _temp = _temp2;
+            _next = _current->m_nextNode;
+            delete _current;
+            _current = _next;
         }
     }
 
@@ -262,7 +262,7 @@ namespace ACE
 
                 delete _tmp;
 
-                break;
+                return;
             }
 
             _tmp = _tmp->m_nextNode;
@@ -272,23 +272,57 @@ namespace ACE
     template< typename T >
     void ACE_List<T>::RemoveAll( const T &in_value )
     {
+        ACE_ListNode<T> *_tmp = m_head;
+        while( _tmp != nullptr )
+        {
+            if( _tmp->m_data == in_value )
+            {
+                ACE_ListNode<T> *_prev = _tmp->m_prevNode;
+                ACE_ListNode<T> *_next = _tmp->m_nextNode;
 
+                if( !_prev && !_next )
+                {
+                    m_head = nullptr;
+                    m_tail = nullptr;
+                }
+                else if( !_prev )
+                {
+                    m_head = m_head->m_nextNode;
+                    m_head->m_prevNode = nullptr;
+                }
+                else if( !_next )
+                {
+                    m_tail = m_tail->m_prevNode;
+                    m_tail->m_nextNode = nullptr;
+                }
+                else
+                {
+                    _prev->m_nextNode = _next;
+                    _next->m_prevNode = _prev;
+                }
+
+//                ACE_ListNode<T> *_delete
+//                delete _tmp;
+            }
+
+            _tmp = _tmp->m_nextNode;
+        }
     }
 
     template< typename T >
-    inline ACE_ListIterator<T> ACE_List<T>::Begin() const
+    inline ACE_ListIterator <T> ACE_List<T>::Begin() const
     {
         return ACE_ListIterator<T>( m_head );
     }
 
     template< typename T >
-    inline ACE_ListIterator<T> ACE_List<T>::End() const
+    inline ACE_ListIterator <T> ACE_List<T>::End() const
     {
         return ACE_ListIterator<T>( m_tail );
     }
 
     template< typename T >
-    ACE_ListIterator<T> ACE_List<T>::Insert( const ACE_ListIterator<T> &in_pos, const T &in_value )
+    ACE_ListIterator <T> ACE_List<T>::Insert( const ACE_ListIterator <T> &in_pos, const T &in_value )
     {
         ACE_ListNode<T> *_node = new ACE_ListNode<T>( in_value );
         if( in_pos.m_node )
@@ -298,13 +332,13 @@ namespace ACE
     }
 
     template< typename T >
-    ACE_ListIterator<T> ACE_List<T>::Insert( const ACE_ListIterator<T> &in_pos, T &&in_value )
+    ACE_ListIterator <T> ACE_List<T>::Insert( const ACE_ListIterator <T> &in_pos, T &&in_value )
     {
         ACE_ListNode<T> *_node = new ACE_ListNode<T>( in_value );
     }
 
     template< typename T >
-    ACE_ListIterator<T> ACE_List<T>::Erase( const ACE_ListIterator<T> &in_pos )
+    ACE_ListIterator <T> ACE_List<T>::Erase( const ACE_ListIterator <T> &in_pos )
     {
         if( in_pos.m_node )
         {
@@ -313,7 +347,7 @@ namespace ACE
     }
 
     template< typename T >
-    ACE_ListIterator<T> ACE_List<T>::Erase( const ACE_ListIterator<T> &in_first, const ACE_ListIterator<T> &in_last )
+    ACE_ListIterator <T> ACE_List<T>::Erase( const ACE_ListIterator <T> &in_first, const ACE_ListIterator <T> &in_last )
     {
 
     }
@@ -336,7 +370,7 @@ namespace ACE
     //  List Iterator
     //
     template< typename T >
-    ACE_ListIterator<T>::ACE_ListIterator( ACE_ListNode<T> *in_node ) noexcept : m_node( in_node )
+    ACE_ListIterator<T>::ACE_ListIterator( ACE_ListNode <T> *in_node ) noexcept : m_node( in_node )
     {
     }
 
@@ -348,7 +382,7 @@ namespace ACE
 
     //  Assignment operator
     template< typename T >
-    ACE_ListIterator<T> &ACE_ListIterator<T>::operator=( const ACE_ListIterator<T> &in_ref ) noexcept
+    ACE_ListIterator <T> &ACE_ListIterator<T>::operator=( const ACE_ListIterator <T> &in_ref ) noexcept
     {
         m_node = in_ref.m_node;
         return *this;
@@ -356,7 +390,7 @@ namespace ACE
 
     //  Increment, Decrement operators
     template< typename T >
-    ACE_ListIterator<T> &ACE_ListIterator<T>::operator++()
+    ACE_ListIterator <T> &ACE_ListIterator<T>::operator++()
     {
         ACE_Assert( m_node != nullptr );
         m_node = m_node->m_nextNode;
@@ -364,7 +398,7 @@ namespace ACE
     }
 
     template< typename T >
-    ACE_ListIterator<T> &ACE_ListIterator<T>::operator--()
+    ACE_ListIterator <T> &ACE_ListIterator<T>::operator--()
     {
         ACE_Assert( m_node != nullptr );
         m_node = m_node->m_prevNode;
@@ -373,13 +407,13 @@ namespace ACE
 
     //  Comparsion operators
     template< typename T2 >
-    bool operator==( const ACE_ListIterator<T2> &in_lhs, const ACE_ListIterator<T2> &in_rhs ) noexcept
+    bool operator==( const ACE_ListIterator <T2> &in_lhs, const ACE_ListIterator <T2> &in_rhs ) noexcept
     {
         return in_lhs.m_node == in_rhs.m_node;
     }
 
     template< typename T2 >
-    bool operator!=( const ACE_ListIterator<T2> &in_lhs, const ACE_ListIterator<T2> &in_rhs ) noexcept
+    bool operator!=( const ACE_ListIterator <T2> &in_lhs, const ACE_ListIterator <T2> &in_rhs ) noexcept
     {
         return in_lhs.m_node != in_rhs.m_node;
     }
