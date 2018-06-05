@@ -43,13 +43,13 @@ namespace ACE
     protected:
         virtual void GraphicUpdate();
     private:
-#if ACE_Platform == ACE_Platform_Linux
+        #if ACE_Platform == ACE_Platform_Linux
 
         XVisualInfo *m_visualInfo;
         Colormap m_colorMap;
         Window m_window;
 
-#endif
+        #endif
 
         //icon
         ACE_Vector2i m_position;

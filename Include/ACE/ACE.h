@@ -138,7 +138,9 @@
  */
 #include <ACE/Script/ScriptManager.h>
 
+#include <ACE/ArgumentParser.h>
 #include <ACE/PrecompiledHeader.h>
+#include <ACE/RootInitializer.h>
 #include <ACE/RootManager.h>
 #include <ACE/Settings.h>
 #include <ACE/SettingsBase.h>

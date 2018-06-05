@@ -25,6 +25,11 @@ set( ACE_IncludeFiles
      Include/ACE/Base/Containers/String.h
      Include/ACE/Base/Containers/String.inl
 
+     Include/ACE/Base/DataAndTime/Data.h
+     Include/ACE/Base/DataAndTime/Time.h
+     Include/ACE/Base/DataAndTime/TimePoint.h
+     Include/ACE/Base/DataAndTime/Timer.h
+
      Include/ACE/Base/Misc/Assert.h
      Include/ACE/Base/Misc/Macro.h
      Include/ACE/Base/Misc/Mutex.h

@@ -11,12 +11,22 @@
 
 #include <OML/Global.h>
 
+using namespace ACE;
 using namespace OML;
 
 int main( int in_argc, char **in_argv )
 {
+    //  Parse Input Arguments
+    ACE_ArgumentParser _argumentParser( in_argc, in_argv );
+    ACE_ReturnIf( !_argumentParser.ParseArguments(), -1 );
+
+    //  Initialize Global Variables
     OML_GlobalInitialize();
-    ACE_RootManagerS.Run( in_argc, in_argv, *G_Application );
+
+    //  Initialize & Start Engine and Application
+    ACE_RootManagerS.Run( *G_Application );
+
+    //  Terminate Global Variables
     OML_GlobalTerminate();
     return 0;
 }

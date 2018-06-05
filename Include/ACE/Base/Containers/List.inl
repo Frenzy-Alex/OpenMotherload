@@ -24,81 +24,61 @@ namespace ACE
     }
 
     template< typename T >
-    ACE_List<T>::ACE_List( size in_size )
+    ACE_List<T>::ACE_List( size in_size ) : m_head( nullptr ), m_tail( nullptr )
     {
-        ACE_Assert( in_size > 0 );
-
-        ACE_ListNode<T> *_listNodeArr[in_size];
-
-        for( int i = 0; i < in_size; ++i )
+        if( in_size > 0 )
         {
-            _listNodeArr[i] = new ACE_ListNode<T>();
+            m_head = new ACE_ListNode<T>();
+            ACE_ListNode<T> *_temp = m_head;
+            for( int i = 1; i < in_size; ++i )
+            {
+                _temp->m_nextNode = new ACE_ListNode<T>( _temp, nullptr );
+                _temp = _temp->m_nextNode;
+            }
+            m_tail = _temp;
         }
-
-        for( int i = 1; i < in_size - 1; ++i )
-        {
-            _listNodeArr[i]->m_prevNode = _listNodeArr[i - 1];
-            _listNodeArr[i]->m_nextNode = _listNodeArr[i + 1];
-        }
-
-        m_head = _listNodeArr[0];
-        m_tail = _listNodeArr[in_size - 1];
     }
 
     template< typename T >
-    ACE_List<T>::ACE_List( size in_size, const T &in_value )
+    ACE_List<T>::ACE_List( size in_size, const T &in_value ) : m_head( nullptr ), m_tail( nullptr )
     {
-        ACE_Assert( in_size > 0 );
-
-        ACE_ListNode<T> *_listNodeArr[in_size];
-
-        for( int i = 0; i < in_size; ++i )
+        if( in_size > 0 )
         {
-            _listNodeArr[i] = new ACE_ListNode<T>( in_value );
+            m_head = new ACE_ListNode<T>( in_value );
+            ACE_ListNode<T> *_temp = m_head;
+            for( int i = 1; i < in_size; ++i )
+            {
+                _temp->m_nextNode = new ACE_ListNode<T>( _temp, nullptr, in_value );
+                _temp = _temp->m_nextNode;
+            }
+            m_tail = _temp;
         }
-
-        for( int i = 1; i < in_size - 1; ++i )
-        {
-            _listNodeArr[i]->m_prevNode = _listNodeArr[i - 1];
-            _listNodeArr[i]->m_nextNode = _listNodeArr[i + 1];
-        }
-
-        m_head = _listNodeArr[0];
-        m_tail = _listNodeArr[in_size - 1];
     }
 
     template< typename T >
-    ACE_List<T>::ACE_List( const ACE_List <T> &in_list )
+    ACE_List<T>::ACE_List( const ACE_List <T> &in_list ) : m_head( nullptr ), m_tail( nullptr )
     {
         if( !in_list.IsEmpty() )
         {
             m_head = new ACE_ListNode<T>( in_list.m_head->m_data );
-            if( in_list.m_head == in_list.m_tail )
-            {
-                m_tail = m_head;
-            }
-            else
-            {
-                ACE_ListNode<T> *_temp = in_list.m_head;
-                while( _temp )
-                {
 
-                    _temp = _temp->m_nextNode;
-                }
+            ACE_ListNode<T> *_temp = in_list.m_head;
+            ACE_ListNode<T> *_temp2 = m_head;
+
+            while( _temp->m_nextNode )
+            {
+                _temp = _temp->m_nextNode;
+                _temp2->m_nextNode = new ACE_ListNode<T>( _temp2, nullptr, _temp->m_data );
+                _temp2 = _temp2->m_nextNode;
+
             }
-        }
-        else
-        {
-            m_head = nullptr;
-            m_tail = nullptr;
+            m_tail = _temp2;
         }
     }
 
     template< typename T >
-    ACE_List<T>::ACE_List( ACE_List <T> &&in_list ) noexcept
+    ACE_List<T>::ACE_List( ACE_List <T> &&in_list ) noexcept : m_head( in_list.m_head ), m_tail( in_list.m_tail )
     {
-        m_head = in_list.m_head;
-        m_tail = in_list.m_tail;
         in_list.m_head = nullptr;
         in_list.m_tail = nullptr;
     }
@@ -116,16 +96,29 @@ namespace ACE
     }
 
     template< typename T >
-    uint ACE_List<T>::Size() const
+    size ACE_List<T>::Size() const
     {
-        uint _size = 0;
+        size _size = 0;
         ACE_ListNode<T> *_temp = m_head;
-        while( _temp != nullptr )
+        while( _temp )
         {
             ++_size;
             _temp = _temp->m_nextNode;
         }
         return _size;
+    }
+
+    template< typename T >
+    void ACE_List<T>::Resize( size in_size )
+    {
+        size _curSize = 0;
+        ACE_ListNode<T> *_temp = m_head;
+        while( _temp && _curSize < in_size )
+        {
+            ++_curSize;
+            _temp = _temp->m_nextNode;
+        }
+        // Not working yet
     }
 
     template< typename T >
@@ -145,99 +138,95 @@ namespace ACE
     template< typename T >
     void ACE_List<T>::Clear()
     {
-        ACE_ListNode<T> *_current = m_head;
-        ACE_ListNode<T> *_next;
-        while( _current != nullptr )
+        ACE_ListNode<T> *_temp = m_head;
+        while( _temp->m_nextNode )
         {
-            _next = _current->m_nextNode;
-            delete _current;
-            _current = _next;
+            _temp = _temp->m_nextNode;
+            delete _temp->m_prevNode;
         }
+        delete _temp;
     }
 
     template< typename T >
     void ACE_List<T>::PopFront()
     {
         ACE_Assert( m_head != nullptr );
+        ACE_ListNode<T> *_temp = m_head;
         if( m_head == m_tail )
         {
-            delete m_head;
             m_head = nullptr;
             m_tail = nullptr;
         }
         else
         {
             m_head = m_head->m_nextNode;
-            delete m_head->m_prevNode;
             m_head->m_prevNode = nullptr;
         }
+        delete _temp;
     }
 
     template< typename T >
     void ACE_List<T>::PushFront( const T &in_data )
     {
-        ACE_ListNode<T> *_tmp = new ACE_ListNode<T>( in_data );
+        ACE_ListNode<T> *_temp = new ACE_ListNode<T>( in_data );
         if( !m_head )
         {
-            m_head = _tmp;
+            m_head = _temp;
             m_tail = m_head;
         }
         else
         {
-            _tmp->m_nextNode = m_head;
-            m_head->m_prevNode = _tmp;
-            m_head = _tmp;
+            _temp->m_nextNode = m_head;
+            m_head->m_prevNode = _temp;
+            m_head = _temp;
         }
     }
 
     template< typename T >
     void ACE_List<T>::PopBack()
     {
-        ACE_Assert( m_head != nullptr );
-        if( m_head )
+        ACE_Assert( m_tail != nullptr );
+        ACE_ListNode<T> *_temp = m_tail;
+        if( m_head == m_tail )
         {
-            if( m_head == m_tail )
-            {
-                delete m_head;
-                m_head = nullptr;
-                m_tail = nullptr;
-            }
-            else
-            {
-                m_tail = m_tail->m_prevNode;
-                delete m_tail->m_nextNode;
-                m_tail->m_nextNode = nullptr;
-            }
+            m_head = nullptr;
+            m_tail = nullptr;
         }
+        else
+        {
+            m_tail = m_tail->m_prevNode;
+            m_tail->m_nextNode = nullptr;
+        }
+        delete _temp;
     }
 
     template< typename T >
     void ACE_List<T>::PushBack( const T &in_data )
     {
-        ACE_ListNode<T> *_tmp = new ACE_ListNode<T>( in_data );
+        ACE_ListNode<T> *_temp = new ACE_ListNode<T>( in_data );
         if( !m_head )
         {
-            m_head = _tmp;
+            m_head = _temp;
             m_tail = m_head;
         }
         else
         {
-            _tmp->m_prevNode = m_tail;
-            m_tail->m_nextNode = _tmp;
-            m_tail = _tmp;
+            _temp->m_prevNode = m_tail;
+            m_tail->m_nextNode = _temp;
+            m_tail = _temp;
         }
     }
 
     template< typename T >
     void ACE_List<T>::Remove( const T &in_value )
     {
-        ACE_ListNode<T> *_tmp = m_head;
-        while( _tmp != nullptr )
+        ACE_ListNode<T> *_temp = m_head;
+        while( _temp )
         {
-            if( _tmp->m_data == in_value )
+            if( _temp->m_data == in_value )
             {
-                ACE_ListNode<T> *_prev = _tmp->m_prevNode;
-                ACE_ListNode<T> *_next = _tmp->m_nextNode;
+                ACE_ListNode<T> *_prev = _temp->m_prevNode;
+                ACE_ListNode<T> *_next = _temp->m_nextNode;
 
                 if( !_prev && !_next )
                 {
@@ -260,25 +249,24 @@ namespace ACE
                     _next->m_prevNode = _prev;
                 }
 
-                delete _tmp;
-
-                return;
+                delete _temp;
+                break;
             }
 
-            _tmp = _tmp->m_nextNode;
+            _temp = _temp->m_nextNode;
         }
     }
 
     template< typename T >
     void ACE_List<T>::RemoveAll( const T &in_value )
     {
-        ACE_ListNode<T> *_tmp = m_head;
-        while( _tmp != nullptr )
+        ACE_ListNode<T> *_temp = m_head;
+        while( _temp != nullptr )
         {
-            if( _tmp->m_data == in_value )
+            if( _temp->m_data == in_value )
             {
-                ACE_ListNode<T> *_prev = _tmp->m_prevNode;
-                ACE_ListNode<T> *_next = _tmp->m_nextNode;
+                ACE_ListNode<T> *_prev = _temp->m_prevNode;
+                ACE_ListNode<T> *_next = _temp->m_nextNode;
 
                 if( !_prev && !_next )
                 {
@@ -301,11 +289,13 @@ namespace ACE
                     _next->m_prevNode = _prev;
                 }
 
-//                ACE_ListNode<T> *_delete
-//                delete _tmp;
+                ACE_ListNode<T> *_delete = _temp;
+                _temp = _temp->m_nextNode;
+                delete _temp;
+                continue;
             }
 
-            _tmp = _tmp->m_nextNode;
+            _temp = _temp->m_nextNode;
         }
     }
 
@@ -329,12 +319,14 @@ namespace ACE
         {
 
         }
+        return ACE_ListIterator<T>( _node );
     }
 
     template< typename T >
     ACE_ListIterator <T> ACE_List<T>::Insert( const ACE_ListIterator <T> &in_pos, T &&in_value )
     {
         ACE_ListNode<T> *_node = new ACE_ListNode<T>( in_value );
+        return ACE_ListIterator<T>( _node );
     }
 
     template< typename T >
@@ -357,12 +349,37 @@ namespace ACE
     //  List Node
     //
     template< typename T >
+    inline ACE_ListNode<T>::ACE_ListNode() noexcept : m_prevNode( nullptr ), m_nextNode( nullptr ), m_data()
+    {
+
+    }
+
+    template< typename T >
+    inline ACE_ListNode<T>::ACE_ListNode( ACE_ListNode <T> *in_prevNode, ACE_ListNode <T> *in_nextNode ) noexcept :
+            m_prevNode( in_prevNode ), m_nextNode( in_nextNode ), m_data()
+    {
+
+    }
+
+    template< typename T >
     inline ACE_ListNode<T>::ACE_ListNode( const T &in_data ) noexcept : m_prevNode( nullptr ), m_nextNode( nullptr ), m_data( in_data )
     {
     }
 
     template< typename T >
+    inline ACE_ListNode<T>::ACE_ListNode( ACE_ListNode <T> *in_prevNode, ACE_ListNode <T> *in_nextNode, const T &in_data ) noexcept :
+            m_prevNode( in_prevNode ), m_nextNode( in_nextNode ), m_data( in_data )
+    {
+    }
+
+    template< typename T >
     inline ACE_ListNode<T>::ACE_ListNode( T &&in_data ) noexcept : m_prevNode( nullptr ), m_nextNode( nullptr ), m_data( in_data )
+    {
+    }
+
+    template< typename T >
+    inline ACE_ListNode<T>::ACE_ListNode( ACE_ListNode <T> *in_prevNode, ACE_ListNode <T> *in_nextNode, T &&in_data ) noexcept :
+            m_prevNode( in_prevNode ), m_nextNode( in_nextNode ), m_data( in_data )
     {
     }
 

@@ -13,7 +13,7 @@
 
 namespace ACE
 {
-    template< int S, typename T >
+    template< uint8 S, typename T >
     struct ACE_VectorBase
     {
         static_assert( S == 2 || S == 3 || S == 4 );
@@ -54,7 +54,7 @@ namespace ACE
         };
     };
 
-    template< int S, typename T >
+    template< uint8 S, typename T >
     struct ACE_Vector : ACE_VectorBase<S, T>
     {
         //
@@ -63,7 +63,7 @@ namespace ACE
 
         ACE_Vector();
 
-        template< int S2, typename T2 >
+        template< uint8 S2, typename T2 >
         ACE_Vector( const ACE_Vector<S2, T2> &in_vec );
 
         ACE_Vector( T in_x );
@@ -79,19 +79,19 @@ namespace ACE
         //  Assignment operators
         //
 
-        template< int S2, typename T2 >
+        template< uint8 S2, typename T2 >
         ACE_Vector &operator=( const ACE_Vector<S2, T2> &in_vec );
 
-        template< int S2, typename T2 >
+        template< uint8 S2, typename T2 >
         ACE_Vector &operator+=( const ACE_Vector<S2, T2> &in_vec );
 
-        template< int S2, typename T2 >
+        template< uint8 S2, typename T2 >
         ACE_Vector &operator-=( const ACE_Vector<S2, T2> &in_vec );
 
-        template< int S2, typename T2 >
+        template< uint8 S2, typename T2 >
         ACE_Vector &operator*=( const ACE_Vector<S2, T2> &in_vec );
 
-        template< int S2, typename T2 >
+        template< uint8 S2, typename T2 >
         ACE_Vector &operator/=( const ACE_Vector<S2, T2> &in_vec );
 
         //
@@ -100,34 +100,34 @@ namespace ACE
 
         ACE_Vector operator-() const;
 
-        template< int S1, typename T1, int S2, typename T2 >
+        template< uint8 S1, typename T1, uint8 S2, typename T2 >
         friend ACE_Vector<S1, T1> operator+( const ACE_Vector<S1, T1> &in_lhs, const ACE_Vector<S2, T2> &in_rhs );
 
-        template< int S1, typename T1, int S2, typename T2 >
+        template< uint8 S1, typename T1, uint8 S2, typename T2 >
         friend ACE_Vector<S1, T1> operator-( const ACE_Vector<S1, T1> &in_lhs, const ACE_Vector<S2, T2> &in_rhs );
 
-        template< int S1, typename T1, int S2, typename T2 >
+        template< uint8 S1, typename T1, uint8 S2, typename T2 >
         friend ACE_Vector<S1, T1> operator*( const ACE_Vector<S1, T1> &in_lhs, const ACE_Vector<S2, T2> &in_rhs );
 
-        template< int S1, typename T1, int S2, typename T2 >
+        template< uint8 S1, typename T1, uint8 S2, typename T2 >
         friend ACE_Vector<S1, T1> operator/( const ACE_Vector<S1, T1> &in_lhs, const ACE_Vector<S2, T2> &in_rhs );
 
         //
         //  Comparison operators
         //
 
-        template< int S1, typename T1, int S2, typename T2 >
+        template< uint8 S1, typename T1, uint8 S2, typename T2 >
         friend bool operator==( const ACE_Vector<S1, T1> &in_lhs, const ACE_Vector<S2, T2> &in_rhs );
 
-        template< int S1, typename T1, int S2, typename T2 >
+        template< uint8 S1, typename T1, uint8 S2, typename T2 >
         friend bool operator!=( const ACE_Vector<S1, T1> &in_lhs, const ACE_Vector<S2, T2> &in_rhs );
 
         //
         //  Member access operators
         //
 
-        T &operator[]( int in_index );
-        const T &operator[]( int in_index ) const;
+        T &operator[]( uint8 in_index );
+        const T &operator[]( uint8 in_index ) const;
 
         //
         //  Static data

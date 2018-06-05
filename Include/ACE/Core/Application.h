@@ -24,8 +24,6 @@ namespace ACE
         explicit ACE_Application( const char *in_objectName );
         virtual ~ACE_Application() override;
     protected:
-        virtual void ParseArgs( int in_argc, char **in_argv );
-
         virtual void Initialize() override;
         virtual void Update();
         virtual void Terminate() override;

@@ -14,7 +14,6 @@
 #include <ACE/SettingsBase.h>
 
 #include <ACE/Base/Containers/String.h>
-#include <ACE/Core/Logging/LoggingCategory.h>
 #include <ACE/Core/Logging/LoggingLevel.h>
 
 namespace ACE
@@ -39,7 +38,7 @@ namespace ACE
     extern ACE_String ACE_Setting_Config_ConfigFileName;
 
     /*
-     *  Default: ACE_LL_Debug
+     *  Default: ACE_LL_Info
      */
     extern ACE_LoggingLevel ACE_Setting_Logging_DefaultLoggingLevel;
 

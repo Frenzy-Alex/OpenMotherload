@@ -11,33 +11,24 @@
 
 #pragma once
 
-#include <ACE/Base/Manager.h>
-#include <ACE/Base/Singleton.h>
-#include <ACE/Base/Containers/List.h>
-#include <ACE/Core/Application.h>
-#include <ACE/RootInitializer.h>
+#include <ACE/Base/Misc/Types.h>
 
 namespace ACE
 {
-    class ACE_RootManager final : public ACE_Manager, public ACE_Singleton<ACE_RootManager>
+    class ACE_ArgumentParser
     {
-        ACE_RootManager();
-        virtual ~ACE_RootManager() override final;
-        friend class ACE_RootInitializer;
     public:
-        void Run( ACE_Application &in_application );
-        void Exit();
+        ACE_ArgumentParser( int in_argCount, char **in_args );
+        virtual ~ACE_ArgumentParser();
 
-        void AttachManager( ACE_Manager *in_manager );
-        void DetachManager( ACE_Manager *in_manager );
+        bool ParseArguments();
     protected:
-        virtual void Initialize() override final;
-        virtual void Update() override final;
-        virtual void Terminate() override final;
-    private:
-        bool m_isExit;
-        ACE_List<ACE_Manager *> m_managers;
-    };
+        virtual bool ParseArgument(u8 &in_argId, const char *in_arg);
 
-    #define ACE_RootManagerS       ACE::ACE_RootManager::GetInstance()
+        virtual void PrintHelp();
+
+        const int m_argCount;
+        char** const m_args;
+    private:
+    };
 }

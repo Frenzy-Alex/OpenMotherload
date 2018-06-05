@@ -1,7 +1,9 @@
 .git/
 .idea/
+.settings/
 
 Binary/
-Build/CMake/Output/
-Data/
-Documentation/
+Build/
+
+.cproject
+.project

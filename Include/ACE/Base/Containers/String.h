@@ -101,7 +101,6 @@ namespace ACE
          */
         void Resize( size in_len, char in_char ) noexcept;
 
-
         /**
          * @brief Clear the string
          */
@@ -143,17 +142,22 @@ namespace ACE
         char *m_string;
     };
 
+    //  String to ...
     template< typename T >
-    T ACE_StringTo( const ACE_String &in_str, bool *out_result = nullptr );
+    bool ACE_StringTo( const ACE_String &in_str, T *out_value );
 
-    template<>
-    bool ACE_StringTo( const ACE_String &in_str, bool *out_result );
+    template< >
+    bool ACE_StringTo( const ACE_String &in_str, bool *out_value );
 
-    template<>
-    int ACE_StringTo( const ACE_String &in_str, bool *out_result );
+    template< >
+    bool ACE_StringTo( const ACE_String &in_str, int *out_value );
 
-    template<>
-    uint ACE_StringTo( const ACE_String &in_str, bool *out_result );
+    template< >
+    bool ACE_StringTo( const ACE_String &in_str, uint *out_value );
+
+    //  To String
+    template< typename T >
+    const ACE_String &ACE_ToString( T in_value );
 
     ACE_String ACE_ToString( short in_value );
     ACE_String ACE_ToString( ushort in_value );
@@ -164,9 +168,14 @@ namespace ACE
     ACE_String ACE_ToString( float in_value );
     ACE_String ACE_ToString( double in_value );
 
+    //  CString To ...
     template< typename T >
-    const ACE_String &ACE_ToString( T in_value );
+    bool ACE_CStringTo( char *in_str, T *out_value );
 
+    template<>
+    bool ACE_CStringTo( char *in_str, bool *out_value );
+
+    //  To CString ...
     template< typename T >
     const char *ACE_ToCString( T in_value );
 }

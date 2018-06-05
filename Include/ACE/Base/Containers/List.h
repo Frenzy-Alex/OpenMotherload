@@ -56,8 +56,8 @@ namespace ACE
         ~ACE_List();
 
         bool IsEmpty() const noexcept;
-        uint Size() const;
-        void Resize( uint in_size );
+        size Size() const;
+        void Resize( size in_size );
 
         T &Front();
         T &Back();
@@ -101,8 +101,13 @@ namespace ACE
         friend class ACE_List<T>;
         friend class ACE_ListIterator<T>;
     protected:
+        ACE_ListNode() noexcept;
+        ACE_ListNode( ACE_ListNode<T> *in_prevNode, ACE_ListNode<T> *in_nextNode ) noexcept;
         explicit ACE_ListNode( const T &in_data ) noexcept;
+        explicit ACE_ListNode( ACE_ListNode<T> *in_prevNode, ACE_ListNode<T> *in_nextNode, const T &in_data ) noexcept;
         explicit ACE_ListNode( T &&in_data ) noexcept;
+        explicit ACE_ListNode( ACE_ListNode<T> *in_prevNode, ACE_ListNode<T> *in_nextNode, T &&in_data ) noexcept;
+
         ~ACE_ListNode() = default;
     private:
         ACE_ListNode<T> *m_prevNode;

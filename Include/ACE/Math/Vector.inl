@@ -19,7 +19,7 @@ namespace ACE
     //  Constructors
     //
 
-    template< int S, typename T >
+    template< uint8 S, typename T >
     inline ACE_Vector<S, T>::ACE_Vector()
     {
         this->x = T( 0 );
@@ -34,8 +34,8 @@ namespace ACE
         }
     };
 
-    template< int S, typename T >
-    template< int S2, typename T2 >
+    template< uint8 S, typename T >
+    template< uint8 S2, typename T2 >
     inline ACE_Vector<S, T>::ACE_Vector( const ACE_Vector<S2, T2> &in_vec )
     {
         this->x = T( in_vec.x );
@@ -65,7 +65,7 @@ namespace ACE
         }
     };
 
-    template< int S, typename T >
+    template< uint8 S, typename T >
     inline ACE_Vector<S, T>::ACE_Vector( T in_x )
     {
         this->x = in_x;
@@ -80,7 +80,7 @@ namespace ACE
         }
     };
 
-    template< int S, typename T >
+    template< uint8 S, typename T >
     inline ACE_Vector<S, T>::ACE_Vector( T in_x, T in_y )
     {
         this->x = in_x;
@@ -95,7 +95,7 @@ namespace ACE
         }
     };
 
-    template< int S, typename T >
+    template< uint8 S, typename T >
     inline ACE_Vector<S, T>::ACE_Vector( T in_x, T in_y, T in_z )
     {
         this->x = in_x;
@@ -110,7 +110,7 @@ namespace ACE
         }
     };
 
-    template< int S, typename T >
+    template< uint8 S, typename T >
     inline ACE_Vector<S, T>::ACE_Vector( T in_x, T in_y, T in_z, T in_w )
     {
         this->x = in_x;
@@ -129,8 +129,8 @@ namespace ACE
     //  Assignment operators
     //
 
-    template< int S, typename T >
-    template< int S2, typename T2 >
+    template< uint8 S, typename T >
+    template< uint8 S2, typename T2 >
     inline ACE_Vector<S, T> &ACE_Vector<S, T>::operator=( const ACE_Vector<S2, T2> &in_vec )
     {
         this->x = in_vec.x;
@@ -146,8 +146,8 @@ namespace ACE
         return *this;
     };
 
-    template< int S, typename T >
-    template< int S2, typename T2 >
+    template< uint8 S, typename T >
+    template< uint8 S2, typename T2 >
     inline ACE_Vector<S, T> &ACE_Vector<S, T>::operator+=( const ACE_Vector<S2, T2> &in_vec )
     {
         this->x += in_vec.x;
@@ -163,8 +163,8 @@ namespace ACE
         return *this;
     };
 
-    template< int S, typename T >
-    template< int S2, typename T2 >
+    template< uint8 S, typename T >
+    template< uint8 S2, typename T2 >
     inline ACE_Vector<S, T> &ACE_Vector<S, T>::operator-=( const ACE_Vector<S2, T2> &in_vec )
     {
         this->x -= in_vec.x;
@@ -180,8 +180,8 @@ namespace ACE
         return *this;
     };
 
-    template< int S, typename T >
-    template< int S2, typename T2 >
+    template< uint8 S, typename T >
+    template< uint8 S2, typename T2 >
     inline ACE_Vector<S, T> &ACE_Vector<S, T>::operator*=( const ACE_Vector<S2, T2> &in_vec )
     {
         this->x *= in_vec.x;
@@ -197,8 +197,8 @@ namespace ACE
         return *this;
     };
 
-    template< int S, typename T >
-    template< int S2, typename T2 >
+    template< uint8 S, typename T >
+    template< uint8 S2, typename T2 >
     inline ACE_Vector<S, T> &ACE_Vector<S, T>::operator/=( const ACE_Vector<S2, T2> &in_vec )
     {
         ACE_Assert( in_vec.x != T( 0 ) );
@@ -222,7 +222,7 @@ namespace ACE
     //  Arithmetic operators
     //
 
-    template< int S, typename T >
+    template< uint8 S, typename T >
     inline ACE_Vector<S, T> ACE_Vector<S, T>::operator-() const
     {
         if constexpr ( S == 2 )
@@ -236,7 +236,7 @@ namespace ACE
         return ACE_Vector( -this->x, -this->y, -this->z, -this->w );
     };
 
-    template< int S1, typename T1, int S2, typename T2 >
+    template< uint8 S1, typename T1, uint8 S2, typename T2 >
     inline ACE_Vector<S1, T1> operator+( const ACE_Vector<S1, T1> &in_lhs, const ACE_Vector<S2, T2> &in_rhs )
     {
         T1 _x = in_lhs.x + in_rhs.x;
@@ -266,7 +266,7 @@ namespace ACE
         return ACE_Vector<S1, T1>( _x, _y );
     };
 
-    template< int S1, typename T1, int S2, typename T2 >
+    template< uint8 S1, typename T1, uint8 S2, typename T2 >
     inline ACE_Vector<S1, T1> operator-( const ACE_Vector<S1, T1> &in_lhs, const ACE_Vector<S2, T2> &in_rhs )
     {
         T1 _x = in_lhs.x - in_rhs.x;
@@ -296,7 +296,7 @@ namespace ACE
         return ACE_Vector<S1, T1>( _x, _y );
     };
 
-    template< int S1, typename T1, int S2, typename T2 >
+    template< uint8 S1, typename T1, uint8 S2, typename T2 >
     inline ACE_Vector<S1, T1> operator*( const ACE_Vector<S1, T1> &in_lhs, const ACE_Vector<S2, T2> &in_rhs )
     {
         T1 _x = in_lhs.x * in_rhs.x;
@@ -326,7 +326,7 @@ namespace ACE
         return ACE_Vector<S1, T1>( _x, _y );
     };
 
-    template< int S1, typename T1, int S2, typename T2 >
+    template< uint8 S1, typename T1, uint8 S2, typename T2 >
     inline ACE_Vector<S1, T1> operator/( const ACE_Vector<S1, T1> &in_lhs, const ACE_Vector<S2, T2> &in_rhs )
     {
         ACE_Assert( in_rhs.x != T1( 0 ) && in_rhs.y != T1( 0 ) );
@@ -363,7 +363,7 @@ namespace ACE
     //  Comparison operators
     //
 
-    template< int S1, typename T1, int S2, typename T2 >
+    template< uint8 S1, typename T1, uint8 S2, typename T2 >
     inline bool operator==( const ACE_Vector<S1, T1> &in_lhs, const ACE_Vector<S2, T2> &in_rhs )
     {
         bool _x = in_lhs.x == in_rhs.x;
@@ -405,7 +405,7 @@ namespace ACE
         return _x && _y;
     };
 
-    template< int S1, typename T1, int S2, typename T2 >
+    template< uint8 S1, typename T1, uint8 S2, typename T2 >
     inline bool operator!=( const ACE_Vector<S1, T1> &in_lhs, const ACE_Vector<S2, T2> &in_rhs )
     {
         bool _x = in_lhs.x != in_rhs.x;
@@ -451,16 +451,15 @@ namespace ACE
     //  Member access operators
     //
 
-    template< int S, typename T >
-    inline T &ACE_Vector<S, T>::operator[]( int in_index )
+    template< uint8 S, typename T >
+    inline T &ACE_Vector<S, T>::operator[]( uint8 in_index )
     {
         ACE_Assert( in_index >= 0 && in_index < S );
         return this->data[in_index];
     };
 
-
-    template< int S, typename T >
-    inline const T &ACE_Vector<S, T>::operator[]( int in_index ) const
+    template< uint8 S, typename T >
+    inline const T &ACE_Vector<S, T>::operator[]( uint8 in_index ) const
     {
         ACE_Assert( in_index >= 0 && in_index < S );
         return this->data[in_index];
@@ -470,9 +469,9 @@ namespace ACE
     //  Static data
     //
 
-    template< int S, typename T > //
+    template< uint8 S, typename T >
     const ACE_Vector<S, T> ACE_Vector<S, T>::zero = ACE_Vector( 0, 0, 0, 0 );
 
-    template< int S, typename T > //
+    template< uint8 S, typename T >
     const ACE_Vector<S, T> ACE_Vector<S, T>::one = ACE_Vector( 1, 1, 1, 1 );
 }
