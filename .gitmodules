@@ -1,0 +1,3 @@
+[submodule "External/ACE"]
+	path = External/ACE
+	url = https://github.com/Frenzy-Alex/AdvancedCrystalEngine.git
